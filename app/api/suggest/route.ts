@@ -23,6 +23,6 @@ export async function POST(req: Request) {
 
   const resp = await client.search({ index, body });
   const opts = resp.body.suggest?.vocab_suggest?.[0]?.options || [];
-  const suggestions = opts.map((o: { text: string }) => o.text);
+  const suggestions = opts.map((o: any) => o.text);
   return NextResponse.json({ suggestions });
 }
