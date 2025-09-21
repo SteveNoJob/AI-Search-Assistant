@@ -134,7 +134,7 @@ export default function HomePage() {
               </div>
               
               <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">&lt;0.1s</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">{'<0.1s'}</div>
                 <div className="text-gray-600">Average Response Time</div>
               </div>
             </div>
