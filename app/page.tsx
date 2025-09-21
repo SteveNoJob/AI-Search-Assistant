@@ -69,7 +69,7 @@ export default function HomePage() {
                 Start Your Search Journey
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up animation-delay-400">
-                Use our AI-powered search to find exactly what you're looking for.
+                Use our AI-powered search to find exactly what you&apos;re looking for.
                 Try searching for fruits, electronics, or any product you need.
               </p>
             </div>
