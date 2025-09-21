@@ -46,11 +46,11 @@ export default function HomePage() {
       </div>
       {/* Header */}
       <div className="bg-white/30 backdrop-blur-lg border-b border-white/20 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
+          <h1 className="text-2xl sm:text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
             AI Product Search
           </h1>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-center text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
             Discover amazing products with intelligent search
           </p>
           
@@ -59,46 +59,46 @@ export default function HomePage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8 relative z-10">
         {!hasSearched ? (
           <>
             {/* Hero Section */}
-            <div className="text-center mt-12 mb-16 animate-fade-in-up">
-              <div className="text-8xl mb-6 animate-bounce-slow">🛍️</div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 animate-fade-in-up animation-delay-200">
+            <div className="text-center mt-8 sm:mt-12 mb-12 sm:mb-16 animate-fade-in-up">
+              <div className="text-6xl sm:text-8xl mb-4 sm:mb-6 animate-bounce-slow">🛍️</div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4 animate-fade-in-up animation-delay-200 px-4">
                 Start Your Search Journey
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up animation-delay-400">
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up animation-delay-400 px-4">
                 Use our AI-powered search to find exactly what you&apos;re looking for.
                 Try searching for fruits, electronics, or any product you need.
               </p>
             </div>
 
             {/* Features Section */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-600">
-                <div className="text-5xl mb-4 animate-bounce-slow">🤖</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">AI-Powered</h3>
-                <p className="text-gray-600">Advanced AI algorithms understand your search intent and deliver precise results.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-600">
+                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 animate-bounce-slow">🤖</div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">AI-Powered</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Advanced AI algorithms understand your search intent and deliver precise results.</p>
               </div>
               
-              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-800">
-                <div className="text-5xl mb-4 animate-pulse">⚡</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Lightning Fast</h3>
-                <p className="text-gray-600">Get instant search results with real-time suggestions as you type.</p>
+              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-800">
+                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 animate-pulse">⚡</div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">Lightning Fast</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Get instant search results with real-time suggestions as you type.</p>
               </div>
               
-              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-1000">
-                <div className="text-5xl mb-4 animate-spin-slow">🎯</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Smart Matching</h3>
-                <p className="text-gray-600">Fuzzy search technology finds products even with typos or partial matches.</p>
+              <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-1000 sm:col-span-2 lg:col-span-1">
+                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 animate-spin-slow">🎯</div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">Smart Matching</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Fuzzy search technology finds products even with typos or partial matches.</p>
               </div>
             </div>
 
             {/* Popular Categories */}
-            <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 mb-16 animate-fade-in-up animation-delay-1200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Popular Categories</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 mb-12 sm:mb-16 animate-fade-in-up animation-delay-1200">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Popular Categories</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                 {[
                   { emoji: '🍎', name: 'Fruits', query: 'apple' },
                   { emoji: '💻', name: 'Electronics', query: 'laptop' },
@@ -112,30 +112,30 @@ export default function HomePage() {
                   <button
                     key={category.name}
                     onClick={() => handleSearch(category.query)}
-                    className="bg-white/30 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/40 transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
+                    className="bg-white/30 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center hover:bg-white/40 transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
                   >
-                    <div className="text-3xl mb-2">{category.emoji}</div>
-                    <div className="text-sm font-medium text-gray-700">{category.name}</div>
+                    <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">{category.emoji}</div>
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">{category.name}</div>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Stats Section */}
-            <div className="grid md:grid-cols-3 gap-8 animate-fade-in-up animation-delay-1400">
-              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">10K+</div>
-                <div className="text-gray-600">Products Available</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 animate-fade-in-up animation-delay-1400">
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">10K+</div>
+                <div className="text-gray-600 text-sm sm:text-base">Products Available</div>
               </div>
               
-              <div className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">99.9%</div>
-                <div className="text-gray-600">Search Accuracy</div>
+              <div className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">99.9%</div>
+                <div className="text-gray-600 text-sm sm:text-base">Search Accuracy</div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-3xl p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">{'<0.1s'}</div>
-                <div className="text-gray-600">Average Response Time</div>
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 text-center hover:scale-105 transition-all duration-300">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">{'<0.1s'}</div>
+                <div className="text-gray-600 text-sm sm:text-base">Average Response Time</div>
               </div>
             </div>
           </>
