@@ -35,7 +35,7 @@ export default function SearchBar({ onSearch, loading }: SearchBarProps) {
         const data = await res.json();
         setSuggestions(data.suggestions || []);
         setShowSuggestions(true);
-      } catch (error) {
+      } catch {
         setSuggestions([]);
       }
     } else {

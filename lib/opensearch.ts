@@ -6,16 +6,20 @@ import { AwsSigv4Signer } from "@opensearch-project/opensearch/aws";
 const node = process.env.OPENSEARCH_ENDPOINT!;
 const username = process.env.OPENSEARCH_USER;
 const password = process.env.OPENSEARCH_PASS;
-const useAWS = process.env.USE_AWS_AUTH === 'true';
+const useAWS = process.env.USE_CLOUD_AUTH === 'true';
 
 export const client = new Client({
   node,
   ...(useAWS ? {
     ...AwsSigv4Signer({
-      region: process.env.AWS_REGION || 'us-east-1',
+      region: process.env.CLOUD_REGION || 'us-east-1',
       service: 'es',
       getCredentials: () => {
-        const credentialsProvider = defaultProvider();
+        const credentialsProvider = defaultProvider({
+          accessKeyId: process.env.CLOUD_ACCESS_KEY_ID,
+          secretAccessKey: process.env.CLOUD_SECRET_ACCESS_KEY,
+          sessionToken: process.env.CLOUD_SESSION_TOKEN
+        });
         return credentialsProvider();
       },
     })
@@ -41,7 +45,7 @@ export async function suggestVocab(prefix: string, size = 6) {
 
   const resp = await client.search({ index, body });
   const opts = resp.body.suggest?.vocab_suggest?.[0]?.options || [];
-  return opts.map((o: any) => o.text);
+  return opts.map((o: { text: string }) => o.text);
 }
 
 export async function fuzzySearchProducts(query: string, size = 12) {
@@ -57,5 +61,5 @@ export async function fuzzySearchProducts(query: string, size = 12) {
     size
   };
   const resp = await client.search({ index, body });
-  return resp.body.hits?.hits?.map((h: any) => h._source) || [];
+  return resp.body.hits?.hits?.map((h: { _source: unknown }) => h._source) || [];
 }

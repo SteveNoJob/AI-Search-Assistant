@@ -21,6 +21,6 @@ export async function POST(req: Request) {
   };
 
   const resp = await client.search({ index, body });
-  const results = resp.body.hits?.hits?.map((h: any) => h._source) || [];
+  const results = resp.body.hits?.hits?.map((h: { _source: unknown }) => h._source) || [];
   return NextResponse.json({ results });
 }

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface Product {
   id: string;
   name: string;
@@ -15,10 +17,11 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="group bg-white/20 backdrop-blur-lg rounded-3xl p-6 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] border border-white/30 hover:shadow-xl hover:scale-105 transition-all duration-300">
       <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
         {product.image ? (
-          <img 
+          <Image 
             src={product.image} 
             alt={product.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         ) : (
           <div className="text-6xl text-gray-400">📦</div>

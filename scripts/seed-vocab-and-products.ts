@@ -5,16 +5,20 @@ import { AwsSigv4Signer } from "@opensearch-project/opensearch/aws";
 import * as dotenv from "dotenv";
 dotenv.config({ path: '.env.local' });
 
-const useAWS = process.env.USE_AWS_AUTH === 'true';
+const useAWS = process.env.USE_CLOUD_AUTH === 'true';
 
 const client = new Client({
   node: process.env.OPENSEARCH_ENDPOINT!,
   ...(useAWS ? {
     ...AwsSigv4Signer({
-      region: process.env.AWS_REGION || 'us-east-1',
+      region: process.env.CLOUD_REGION || 'us-east-1',
       service: 'es',
       getCredentials: () => {
-        const credentialsProvider = defaultProvider();
+        const credentialsProvider = defaultProvider({
+          accessKeyId: process.env.CLOUD_ACCESS_KEY_ID,
+          secretAccessKey: process.env.CLOUD_SECRET_ACCESS_KEY,
+          sessionToken: process.env.CLOUD_SESSION_TOKEN
+        });
         return credentialsProvider();
       },
     })
