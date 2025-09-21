@@ -1,14 +1,27 @@
 // lib/opensearch.ts
 import { Client } from "@opensearch-project/opensearch";
+import { defaultProvider } from "@aws-sdk/credential-provider-node";
+import { AwsSigv4Signer } from "@opensearch-project/opensearch/aws";
 
 const node = process.env.OPENSEARCH_ENDPOINT!;
 const username = process.env.OPENSEARCH_USER;
 const password = process.env.OPENSEARCH_PASS;
+const useAWS = process.env.USE_AWS_AUTH === 'true';
 
 export const client = new Client({
   node,
-  auth: username ? { username, password } : undefined,
-  // If you need AWS SigV4, see comment below.
+  ...(useAWS ? {
+    ...AwsSigv4Signer({
+      region: process.env.AWS_REGION || 'us-east-1',
+      service: 'es',
+      getCredentials: () => {
+        const credentialsProvider = defaultProvider();
+        return credentialsProvider();
+      },
+    })
+  } : {
+    auth: username ? { username, password } : undefined
+  })
 });
 
 export async function suggestVocab(prefix: string, size = 6) {
