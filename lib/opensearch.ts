@@ -17,11 +17,7 @@ if (useAWS) {
       region: process.env.CLOUD_REGION || 'us-east-1',
       service: 'es',
       getCredentials: () => {
-        const credentialsProvider = defaultProvider({
-          accessKeyId: process.env.CLOUD_ACCESS_KEY_ID,
-          secretAccessKey: process.env.CLOUD_SECRET_ACCESS_KEY,
-          sessionToken: process.env.CLOUD_SESSION_TOKEN
-        });
+        const credentialsProvider = defaultProvider();
         return credentialsProvider();
       },
     })
