@@ -45,7 +45,7 @@ export async function suggestVocab(prefix: string, size = 6) {
 
   const resp = await client.search({ index, body });
   const opts = resp.body.suggest?.vocab_suggest?.[0]?.options || [];
-  return opts.map((o: any) => o.text);
+  return Array.isArray(opts) ? opts.map((o: any) => o.text) : [];
 }
 
 export async function fuzzySearchProducts(query: string, size = 12) {
@@ -61,5 +61,6 @@ export async function fuzzySearchProducts(query: string, size = 12) {
     size
   };
   const resp = await client.search({ index, body });
-  return resp.body.hits?.hits?.map((h: any) => h._source) || [];
+  const hits = resp.body.hits?.hits || [];
+  return Array.isArray(hits) ? hits.map((h: any) => h._source).filter(Boolean) : [];
 }
