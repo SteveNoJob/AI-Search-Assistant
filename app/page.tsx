@@ -112,7 +112,7 @@ export default function HomePage() {
                   <button
                     key={category.name}
                     onClick={() => handleSearch(category.query)}
-                    className="bg-white/30 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/40 transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                    className="bg-white/30 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/40 transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
                   >
                     <div className="text-3xl mb-2">{category.emoji}</div>
                     <div className="text-sm font-medium text-gray-700">{category.name}</div>
