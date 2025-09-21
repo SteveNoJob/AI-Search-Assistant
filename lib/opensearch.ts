@@ -8,9 +8,11 @@ const username = process.env.OPENSEARCH_USER;
 const password = process.env.OPENSEARCH_PASS;
 const useAWS = process.env.USE_CLOUD_AUTH === 'true';
 
-export const client = new Client({
-  node,
-  ...(useAWS ? {
+let clientConfig: any = { node };
+
+if (useAWS) {
+  clientConfig = {
+    ...clientConfig,
     ...AwsSigv4Signer({
       region: process.env.CLOUD_REGION || 'us-east-1',
       service: 'es',
@@ -23,10 +25,12 @@ export const client = new Client({
         return credentialsProvider();
       },
     })
-  } : {
-    auth: username ? { username, password } : undefined
-  })
-});
+  };
+} else if (username && password) {
+  clientConfig.auth = { username, password };
+}
+
+export const client = new Client(clientConfig);
 
 export async function suggestVocab(prefix: string, size = 6) {
   const index = process.env.OPENSEARCH_INDEX_VOCAB!;

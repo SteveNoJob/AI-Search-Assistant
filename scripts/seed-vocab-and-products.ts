@@ -7,9 +7,11 @@ dotenv.config({ path: '.env.local' });
 
 const useAWS = process.env.USE_CLOUD_AUTH === 'true';
 
-const client = new Client({
-  node: process.env.OPENSEARCH_ENDPOINT!,
-  ...(useAWS ? {
+let clientConfig: any = { node: process.env.OPENSEARCH_ENDPOINT! };
+
+if (useAWS) {
+  clientConfig = {
+    ...clientConfig,
     ...AwsSigv4Signer({
       region: process.env.CLOUD_REGION || 'us-east-1',
       service: 'es',
@@ -22,13 +24,15 @@ const client = new Client({
         return credentialsProvider();
       },
     })
-  } : {
-    auth: process.env.OPENSEARCH_USER ? {
-      username: process.env.OPENSEARCH_USER,
-      password: process.env.OPENSEARCH_PASS!
-    } : undefined
-  })
-});
+  };
+} else if (process.env.OPENSEARCH_USER && process.env.OPENSEARCH_PASS) {
+  clientConfig.auth = {
+    username: process.env.OPENSEARCH_USER,
+    password: process.env.OPENSEARCH_PASS
+  };
+}
+
+const client = new Client(clientConfig);
 
 async function main(): Promise<void> {
   // 1) Create vocab index with completion suggester
