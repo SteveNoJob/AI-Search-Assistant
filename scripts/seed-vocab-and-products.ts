@@ -13,7 +13,7 @@ if (useAWS) {
   clientConfig = {
     ...clientConfig,
     ...AwsSigv4Signer({
-      region: process.env.CLOUD_REGION || 'us-east-1',
+      region: process.env.AWS_REGION || 'us-east-1',
       service: 'es',
       getCredentials: () => {
         const credentialsProvider = defaultProvider();
